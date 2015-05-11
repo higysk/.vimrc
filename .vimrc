@@ -92,6 +92,24 @@ NeoBundle 'alpaca-tc/alpaca_powertabline'
 NeoBundle 'Lokaltog/powerline', { 'rtp' : 'powerline/bindings/vim'}
 NeoBundle 'Lokaltog/powerline-fontpatcher'
 
+NeoBundle 'kien/ctrlp.vim'
+
+NeoBundle 'kannokanno/previm'
+augroup PrevimSettings
+  autocmd!
+  autocmd BufNewFile,BufRead *.{md,mdwn,mkd,mkdn,mark*} set filetype=markdown
+augroup END
+
+NeoBundle 'open-browser.vim'
+let g:netrw_nogx = 1 " disable netrw's gx mapping.
+nmap gx <Plug>(openbrowser-smart-search)
+vmap gx <Plug>(openbrowser-smart-search)
+
+NeoBundle 'godlygeek/tabular'
+NeoBundle 'joker1007/vim-markdown-quote-syntax'
+NeoBundle 'rcmdnk/vim-markdown'
+
+
 " ag setting
 " insert modeで開始
 let g:unite_enable_start_insert = 1
@@ -144,7 +162,8 @@ nnoremap sq :<C-u>q<CR>
 nnoremap sQ :<C-u>bd<CR>
 nnoremap sb :<C-u>Unite buffer_tab -buffer-name=file<CR>
 nnoremap sB :<C-u>Unite buffer -buffer-name=file<CR>
-nnoremap sf :<C-u>Unite file buffer<CR>
+nnoremap sf :<C-u>Unite buffer file <CR>
+nnoremap sF :<C-u>Unite buffer file_rec <CR>
 
 "call submode#enter_with('bufmove', 'n', '', 's>', '<C-w>>')
 "call submode#enter_with('bufmove', 'n', '', 's<', '<C-w><')
