@@ -17,97 +17,87 @@ filetype plugin indent off
 if has('vim_starting')
     set runtimepath+=~/.vim/bundle/neobundle.vim
       call neobundle#begin(expand('~/.vim/bundle/'))
-          NeoBundleFetch 'Shougo/neobundle.vim'
+        NeoBundleFetch 'Shougo/neobundle.vim'
+        NeoBundle 'Shougo/unite.vim'
+        NeoBundle 'Shougo/neosnippet.vim'
+        NeoBundle 'Shougo/neocomplcache.vim'
+        NeoBundle 'Shougo/vimproc', {
+          \ 'build' : {
+          \     'mac' : 'make -f make_mac.mak',
+          \     'unix' : 'make -f make_unix.mak',
+          \    },
+          \ }
+        NeoBundle 'tomasr/molokai'
+        NeoBundle 'alpaca-tc/alpaca_tags'
+        NeoBundle 'scrooloose/syntastic'
+        NeoBundle 'tpope/vim-surround'
+        NeoBundle 'tpope/vim-endwise'
+        NeoBundle 'violetyk/neocomplete-php.vim'
+        NeoBundle 'mattn/emmet-vim'
+        NeoBundle 'taglist.vim'
+        NeoBundle 'szw/vim-tags'
+        NeoBundle 'soramugi/auto-ctags.vim'
+        NeoBundle 'Yggdroot/indentLine'
+        NeoBundle 'terryma/vim-multiple-cursors'
+        NeoBundle 'rust-lang/rust.vim'
+        NeoBundle 'scrooloose/syntastic'
+        NeoBundle 'tpope/vim-rails'
+        NeoBundle 'junegunn/vim-easy-align'
+        NeoBundle 'rhysd/accelerated-jk'
+        NeoBundle 'alpaca-tc/alpaca_powertabline'
+        NeoBundle 'Lokaltog/powerline', { 'rtp' : 'powerline/bindings/vim'}
+        NeoBundle 'Lokaltog/powerline-fontpatcher'
+        NeoBundle 'kien/ctrlp.vim'
+        NeoBundle 'kannokanno/previm'
+        NeoBundle 'open-browser.vim'
+        NeoBundle 'godlygeek/tabular'
+        NeoBundle 'joker1007/vim-markdown-quote-syntax'
+        NeoBundle 'rcmdnk/vim-markdown'
       call neobundle#end()
+
 endif
 
-NeoBundleFetch 'Shougo/neobundle.vim'
 
-NeoBundle 'Shougo/unite.vim'
-NeoBundle 'Shougo/neosnippet.vim'
-NeoBundle 'Shougo/neocomplcache.vim'
-  let g:neocomplcache_enable_at_startup = 1
-  let g:neocomplcache_max_list = 20
-  let g:neocomplcache_manual_completion_start_length = 3
-  let g:neocomplcache_enable_ignore_case = 1
-  let g:neocomplcache_enable_smart_case = 1
-  if !exists('g:neocomplcache_delimiter_patterns')
-    let g:neocomplcache_delimiter_patterns = {}
-  endif
-  inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+let g:neocomplcache_enable_at_startup = 1
+let g:neocomplcache_max_list = 20
+let g:neocomplcache_manual_completion_start_length = 3
+let g:neocomplcache_enable_ignore_case = 1
+let g:neocomplcache_enable_smart_case = 1
+if !exists('g:neocomplcache_delimiter_patterns')
+  let g:neocomplcache_delimiter_patterns = {}
+endif
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 
-NeoBundle 'Shougo/vimproc', {
-      \ 'build' : {
-      \     'mac' : 'make -f make_mac.mak',
-      \     'unix' : 'make -f make_unix.mak',
-      \    },
-      \ }
-
-NeoBundle 'tomasr/molokai'
 
 let g:molokai_original=1
 let g:rehash256=1
 colorscheme molokai
 
-NeoBundle 'alpaca-tc/alpaca_tags'
-
-NeoBundle 'scrooloose/syntastic'
 let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': ['ruby'] }
 let g:syntastic_ruby_checkers = ['rubocop']
 
-NeoBundle 'tpope/vim-surround'
-NeoBundle 'tpope/vim-endwise'
-
-NeoBundle 'violetyk/neocomplete-php.vim'
-NeoBundle 'mattn/emmet-vim'
-
-NeoBundle 'taglist.vim'
-NeoBundle 'szw/vim-tags'
-NeoBundle 'soramugi/auto-ctags.vim'
-
-NeoBundle 'Yggdroot/indentLine'
 set list listchars=tab:\|\
 
-NeoBundle 'terryma/vim-multiple-cursors'
-
-NeoBundle 'rust-lang/rust.vim'
-
-NeoBundle 'scrooloose/syntastic'
 let g:syntastic_enable_signs=1
 let g:syntastic_auto_loc_list=2
 
-NeoBundle 'tpope/vim-rails'
-
-NeoBundle 'junegunn/vim-easy-align'
 " Start interactive EasyAlign in visual mode (e.g. vip<Enter>)
 vmap <Enter> <Plug>(EasyAlign)
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)
 
-NeoBundle 'rhysd/accelerated-jk'
 nmap j <Plug>(accelerated_jk_gj)
 nmap k <Plug>(accelerated_jk_gk)
 
-NeoBundle 'alpaca-tc/alpaca_powertabline'
-NeoBundle 'Lokaltog/powerline', { 'rtp' : 'powerline/bindings/vim'}
-NeoBundle 'Lokaltog/powerline-fontpatcher'
-
-NeoBundle 'kien/ctrlp.vim'
-
-NeoBundle 'kannokanno/previm'
 augroup PrevimSettings
   autocmd!
   autocmd BufNewFile,BufRead *.{md,mdwn,mkd,mkdn,mark*} set filetype=markdown
 augroup END
 
-NeoBundle 'open-browser.vim'
 let g:netrw_nogx = 1 " disable netrw's gx mapping.
 nmap gx <Plug>(openbrowser-smart-search)
 vmap gx <Plug>(openbrowser-smart-search)
 
-NeoBundle 'godlygeek/tabular'
-NeoBundle 'joker1007/vim-markdown-quote-syntax'
-NeoBundle 'rcmdnk/vim-markdown'
 
 
 " ag setting
@@ -162,8 +152,8 @@ nnoremap sq :<C-u>q<CR>
 nnoremap sQ :<C-u>bd<CR>
 nnoremap sb :<C-u>Unite buffer_tab -buffer-name=file<CR>
 nnoremap sB :<C-u>Unite buffer -buffer-name=file<CR>
-nnoremap sf :<C-u>Unite buffer file <CR>
-nnoremap sF :<C-u>Unite buffer file_rec <CR>
+nnoremap sf :<C-u>Unite file buffer <CR>
+nnoremap sF :<C-u>Unite file_rec buffer <CR>
 
 "call submode#enter_with('bufmove', 'n', '', 's>', '<C-w>>')
 "call submode#enter_with('bufmove', 'n', '', 's<', '<C-w><')
